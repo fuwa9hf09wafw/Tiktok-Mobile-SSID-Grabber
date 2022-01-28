@@ -25,10 +25,7 @@ class grab_ssid(object):
                 if key == _:
                     encryption += value
         return encryption
-
-
-
-
+    
     def new_password_set(self,ticket,password):
         cookies = {'passport_csrf_token': '7cf44766fba6039fb5d9a11d391ccd0a','passport_csrf_token_default': '7cf44766fba6039fb5d9a11d391ccd0a','store-idc': 'maliva','store-country-code': 'ca','odin_tt': '979436195002bfcc4c6e529c39e1472a449ed8601e3a7d626263375f64a2e23fe0d7c8170101a4bf1b44814c817d49458efe9e2175f17054763a4657ad6672e45311c041bba53b8fef59e60630397612','d_ticket': '2b21c627134e865c8b978a21d65f26bb8d96c',}
         headers = { 'X-SS-STUB': '9C17E0D1DEED41B0F1BD99705D5E2B97','Accept-Encoding': 'gzip','x-tt-passport-csrf-token': '7cf44766fba6039fb5d9a11d391ccd0a','passport-sdk-version': '19','sdk-version': '2','User-Agent': 'com.zhiliaoapp.musically/2022209010 (Linux; U; Android 7.1.2; en_US; MGHN3VC/A; Build/N2G48H;tt-ok/3.10.0.2)'}
@@ -51,11 +48,6 @@ class grab_ssid(object):
             print(f'[{Fore.RED}+{Fore.RESET}] Your SSID is > {self._session_id}!')
             print(f'[{Fore.RED}+{Fore.RESET}] Your New Password is {self._password}!.')
             self._session_id = status.text.split('session_key')[1].split(':')[1].split('"')[1]
-
-
-
-
-
 
     def auth_change(self, email, code):
         cookies = {'passport_csrf_token': '7cf44766fba6039fb5d9a11d391ccd0a','passport_csrf_token_default': '7cf44766fba6039fb5d9a11d391ccd0a','store-idc': 'maliva','store-country-code': 'ca','odin_tt': '979436195002bfcc4c6e529c39e1472a449ed8601e3a7d626263375f64a2e23fe0d7c8170101a4bf1b44814c817d49458efe9e2175f17054763a4657ad6672e45311c041bba53b8fef59e60630397612',}
@@ -120,9 +112,6 @@ class grab_ssid(object):
         elif 'success' in status.text:
             self._email_code = input(f'[{Fore.RED}>{Fore.RESET}] Code From inbox: ')
             self.auth_change(email=self._email,code=self._email_code)
-
-
-        
 
 email = input(f'[{Fore.RED}>{Fore.RESET}] Email: ')
 ssid = grab_ssid(email=email)
