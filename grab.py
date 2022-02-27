@@ -44,10 +44,11 @@ class grab_ssid(object):
             return self.new_password_set(ticket=self._ticket, password=self._password)
         
         elif 'session_key' in status.text:
+            self._session_id = status.text.split('session_key')[1].split(':')[1].split('"')[1]
             print(f'[{Fore.RED}+{Fore.RESET}] Successfully Grabbed SSID!.')
             print(f'[{Fore.RED}+{Fore.RESET}] Your SSID is > {self._session_id}!')
             print(f'[{Fore.RED}+{Fore.RESET}] Your New Password is {self._password}!.')
-            self._session_id = status.text.split('session_key')[1].split(':')[1].split('"')[1]
+      
 
     def auth_change(self, email, code):
         cookies = {'passport_csrf_token': '7cf44766fba6039fb5d9a11d391ccd0a','passport_csrf_token_default': '7cf44766fba6039fb5d9a11d391ccd0a','store-idc': 'maliva','store-country-code': 'ca','odin_tt': '979436195002bfcc4c6e529c39e1472a449ed8601e3a7d626263375f64a2e23fe0d7c8170101a4bf1b44814c817d49458efe9e2175f17054763a4657ad6672e45311c041bba53b8fef59e60630397612',}
@@ -115,8 +116,3 @@ class grab_ssid(object):
 
 email = input(f'[{Fore.RED}>{Fore.RESET}] Email: ')
 ssid = grab_ssid(email=email)
-print(ssid._session_id)
-print(ssid._email)
-print(ssid._email_code)
-print(ssid._password)
-print(ssid._ticket)
